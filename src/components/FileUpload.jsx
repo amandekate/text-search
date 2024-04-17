@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { Label, Input } from "./ui";
 
 const FileUpload = ({ onUpload }) => {
   const handleFileChange = (e) => {
@@ -7,8 +8,9 @@ const FileUpload = ({ onUpload }) => {
   };
 
   return (
-    <div>
-      <input type="file" onChange={handleFileChange} />
+    <div className="flex flex-col p-1 gap-1 max-w-[250px]">
+      <Label htmlFor="upload">Upload File</Label>
+      <Input id="upload" type="file" onChange={handleFileChange} />
     </div>
   );
 };
