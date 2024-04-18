@@ -9,7 +9,7 @@ const FileUpload = ({ onUpload }) => {
 
   return (
     <div className="flex flex-col p-1 gap-1 max-w-[250px]">
-      <Label htmlFor="upload">Upload File</Label>
+      <Label htmlFor="upload" className="font-semibold pl-1">Upload File</Label>
       <Input id="upload" type="file" onChange={handleFileChange} />
     </div>
   );

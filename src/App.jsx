@@ -36,8 +36,8 @@ const App = () => {
     );
   } else {
     return (
-      <div className="h-full w-screen justify-center items-center flex flex-col">
-        <div className="w-full h-auto p-2 flex">
+      <div className="h-full w-screen justify-center items-center flex flex-col ">
+        <div className="w-full h-auto p-2 flex items-start">
           <FileUpload onUpload={handleFileUpload} />
           <SearchBar onSearch={handleSearch} />
         </div>
@@ -48,7 +48,7 @@ const App = () => {
             text={text}
             totalWords={countWords(text)}
           />
-          <p>Shortcut guide</p>
+          <p className="text-gray-500"><span className="font-semibold text-black pl-1">Shortcut guide :</span> Ctrl + Q  - For search </p>
         </div>
       </div>
     );

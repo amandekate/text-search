@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Textarea, Input, Button, Label } from "./ui";
+import { Input, Button, Label } from "./ui";
+import { IoCloseCircleSharp, IoCloseOutline } from "react-icons/io5";
 
 function SearchBar({ onSearch }) {
   const [query, setQuery] = useState("");
@@ -19,7 +20,7 @@ function SearchBar({ onSearch }) {
       if (e.ctrlKey && e.key === "q") {
         // Ctrl + F pressed
         e.preventDefault(); // Prevent browser's native "Find in page"
-        
+
         document.getElementById("search-textarea").focus();
       }
     };
@@ -76,11 +77,19 @@ function SearchBar({ onSearch }) {
     }
   };
 
+  const removeSuggestion = (index) => {
+    const updatedSuggestions = [...suggestions];
+    updatedSuggestions.splice(index, 1);
+    setSuggestions(updatedSuggestions);
+  };
+
   return (
     <div className="flex gap-2">
       <form onSubmit={handleSearchSubmit} className="flex p-1 gap-1 items-end">
         <div className="flex flex-col gap-1 max-w-[250px]">
-          <Label htmlFor="search-textarea">Search</Label>
+          <Label htmlFor="search-textarea" className="font-semibold pl-1">
+            Search
+          </Label>
           <Input
             id="search-textarea"
             value={query}
@@ -101,9 +110,19 @@ function SearchBar({ onSearch }) {
           <Label htmlFor="history">History</Label>
           <div id="history" className="flex flex-wrap gap-2">
             {suggestions.map((suggestion, index) => (
-              <p key={index} onClick={() => handleSuggestionClick(suggestion)}>
-                {suggestion}
-              </p>
+              <div key={index} className="flex items-center">
+                <div className="bg-gray-800 text-white rounded-full p-1 inline-flex items-center">
+                  <p onClick={() => handleSuggestionClick(suggestion)}>
+                    {suggestion}
+                  </p>
+                  <button
+                    className="ml-2 p-1 text-white rounded-full"
+                    onClick={() => removeSuggestion(index)}
+                  >
+                    <IoCloseCircleSharp />
+                  </button>
+                </div>
+              </div>
             ))}
           </div>
         </div>

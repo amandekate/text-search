@@ -3,7 +3,7 @@ import React from 'react';
 const SearchResult = ({ searchQuery, searchResults, text, totalWords }) => {
   return (
     <div>
-      <p>Total occurrences of "{searchQuery}": {searchResults.length}</p>
+      <p className="font-semibold pl-1">Total occurrences of "{searchQuery}": {searchResults.length}</p>
       <pre className='border-2 rounded p-2'>
         {text?.split(searchQuery).map((part, index) => (
           <span key={index}>
@@ -15,7 +15,7 @@ const SearchResult = ({ searchQuery, searchResults, text, totalWords }) => {
         ))}
       </pre>
       <br />
-      <p>Total words in the text: {totalWords}</p>
+      <p className="font-semibold pl-1" >Total words in the text: {totalWords}</p>
     </div>
   );
 };
